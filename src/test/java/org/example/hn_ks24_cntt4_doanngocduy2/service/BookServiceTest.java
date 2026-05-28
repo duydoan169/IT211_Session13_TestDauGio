@@ -69,7 +69,7 @@ class BookServiceTest {
 
     @Test
     void deleteBook_notFound() {
-        when(bookRepository.existsById(1L)).thenReturn(false);
+        when(bookRepository.findById(1L)).thenReturn(Optional.empty());
 
         assertThatThrownBy(() -> bookService.deleteBook(1L))
                 .isInstanceOf(BookNotFoundException.class);
